@@ -1,0 +1,9 @@
+https:
+  port: "8082" 
+  
+http:
+  protocol: "HTTPS"
+  port: "8081"
+
+autoDiscovery:
+  appId: "17956456"

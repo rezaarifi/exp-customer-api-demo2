@@ -1,0 +1,27 @@
+#%RAML 1.0
+types:
+  Customer:
+    type: object
+      
+title: Customer API
+mediaType:
+  - application/json
+version: v1
+protocols:
+  - HTTP
+
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+
+/customers:
+  get:
+    displayName: Get Customers
+    is:
+      - client-id-required
+    
+
