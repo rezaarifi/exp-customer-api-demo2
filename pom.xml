@@ -49,15 +49,8 @@
 						<workers>${workers}</workers>
 						<workerType>${workerType}</workerType>
 						<objectStoreV2>true</objectStoreV2>
-						<properties>
-							<app.runtime>4.4.0</app.runtime>
-							<username>reza-arifi</username>
-							<password>Rz@Mulesoft21</password>
-							<cloudhub.application.name>exp-customer-api-demo2</cloudhub.application.name>
-							<environment>Sandbox</environment>
-							<region>us-e2</region>
-							<workers>1</workers>
-							<workerType>MICRO</workerType>
+						<properties>							
+							<mule.env>dev</mule.env>							
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
