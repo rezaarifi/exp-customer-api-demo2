@@ -50,7 +50,8 @@
 						<workerType>${workerType}</workerType>
 						<objectStoreV2>true</objectStoreV2>
 						<properties>							
-							<mule.env>dev</mule.env>							
+							<mule.env>dev</mule.env>
+							<encryption.key>${encryption.key}</encryption.key>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
