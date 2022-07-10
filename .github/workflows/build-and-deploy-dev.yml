@@ -2,11 +2,15 @@
 
 name: Build and Deploy to Dev
 
-# on:
+on:
 #   push:
-#     branches: [ main ]
+#    branches: [ main ]
+  workflow_dispatch:
+  
+#  on: 
 #   workflow_dispatch:
-    
+  
+   
 jobs:
   build:
     runs-on: ubuntu-latest 
