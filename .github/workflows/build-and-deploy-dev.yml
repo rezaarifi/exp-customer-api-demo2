@@ -6,10 +6,7 @@ on:
 #   push:
 #    branches: [ main ]
   workflow_dispatch:
-  
-#  on: 
-#   workflow_dispatch:
-  
+ 
    
 jobs:
   build:
@@ -77,8 +74,8 @@ jobs:
         USERNAME: ${{ secrets.anypoint_cicd_username }}
         PASSWORD: ${{ secrets.anypoint_cicd_password }}
         ENCRYPTION_KEY: ${{secrets.encryption_key }}
-        ANYPOINT_PLATFORM_CLIENT_ID: ${{anypoint_platform_client_id_dev}}
-        ANYPOINT_PLATFORM_CLIENT_SECRET: ${{anypoint_platform_client_secret_dev}}
+        ANYPOINT_PLATFORM_CLIENT_ID: ${{secrets.anypoint_platform_client_id_dev}}
+        ANYPOINT_PLATFORM_CLIENT_SECRET: ${{secrets.anypoint_platform_client_secret_dev}}
         
         
       run: |
