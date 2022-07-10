@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<error-handler name="common-error-handlingError_Handler" doc:id="c581dfb8-e05b-4808-ab28-ac2756aff1ef" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="7ddede73-f00e-4f3f-a32d-5d521a89bd3d" >
+			<ee:transform doc:name="To Error message" doc:id="895d5303-d7f3-4245-9c06-d2f6028f95d5">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+	code: "GENRIC_ERROR",//error.errorType.identifier,
+	message: "Internal server error"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		</on-error-propagate>
+	</error-handler>
+</mule>

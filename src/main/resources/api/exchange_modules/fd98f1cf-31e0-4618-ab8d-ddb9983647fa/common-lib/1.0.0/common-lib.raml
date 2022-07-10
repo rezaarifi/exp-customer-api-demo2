@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+usage: Common Security RAML Fragments to standardise implementation of common aspects of RAML API Specifications.
+
+traits:
+  partial: !include traits/partial.raml  
+  cacheable: !include traits/cacheable.raml
+  sortable: !include traits/sortable.raml
+  searchable: !include traits/searchable.raml
+  pageable: !include traits/pageable.raml
+  client-id-required: !include traits/client-id-enforcement.raml
+  304: !include traits/304-trait.raml
+  400: !include traits/400-trait.raml
+  401: !include traits/401-trait.raml
+  404: !include traits/404-trait.raml
+  429: !include traits/429-trait.raml
+  500: !include traits/500-trait.raml
+
+
+
+securitySchemes:
+  basic-authentication: !include security-schemes/basic-authentication.raml
+  oauth_2_0: !include security-schemes/oauth_2_0.raml
+
+types:
+  error: !include data-types/error.raml
+

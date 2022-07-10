@@ -14,29 +14,30 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
 
 	<http:listener-config
-		name="sample-customer-api-httpListenerConfig" >
-		<http:listener-connection host="0.0.0.0"
-			port="${https.port}" tlsContext="TLS_Context" protocol="${http.protocol}"/>	   
+		name="exp-customer-api-demo-httpListenerConfig" >
+		<http:listener-connection host="0.0.0.0"		
+ 			port="${https.port}" tlsContext="TLS_Context" protocol="${http.protocol}"/>	   
+				
 	</http:listener-config>
 
-	<apikit:config name="sample-customer-api-config"
-		api="sample-customer-api.raml"
+	<apikit:config name="exp-customer-api-demo-config"
+		api="exp-customer-api-demo.raml"
 		outboundHeadersMapName="outboundHeaders"
 		httpStatusVarName="httpStatus" />
 		
 	<configuration-properties
 		doc:name="Configuration properties"
 		doc:id="7234fbfc-2a1b-4dae-9163-9049c6108de4"
-		file="exp-customer-api-demo-${mule.env}.yaml" />
+		file="properties\exp-customer-api-demo-${mule.env}.yaml" />
 		
 	<tls:context name="TLS_Context" doc:name="TLS Context"
 		doc:id="b73bb5fc-f7be-4c53-a67f-1fd376a6904c">
-		<tls:key-store type="jks" path="server.jks" alias="serverkey"		
+		<tls:key-store type="jks" path="tls\keystore.jks" alias="mule"		
 		keyPassword="${secure::tls.keystore.keypassword}" password="${secure::tls.keystore.password}" /> 
 	</tls:context>
-	<api-gateway:autodiscovery apiId="${autoDiscovery.appId}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="aca627cd-c6f5-4744-bbe2-31cdff3157da" flowRef="sample-customer-api-main"/>
-	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="dda7addb-a002-473b-ada5-ba2a5aa40392" file="secure-${mule.env}.yaml" key="${encryption.key}" />
-   	
-	
+ 	<api-gateway:autodiscovery apiId="${autoDiscovery.appId}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="aca627cd-c6f5-4744-bbe2-31cdff3157da" flowRef="exp-customer-api-demo-main"/>
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="dda7addb-a002-473b-ada5-ba2a5aa40392" file="properties\secure-${mule.env}.yaml" key="${encryption.key}" />
+	<configuration doc:name="Configuration" doc:id="858c1b5a-cb0c-48a7-a724-e3b997a14999" defaultErrorHandler-ref="common-error-handlingError_Handler" />
+ 	
 
 </mule>

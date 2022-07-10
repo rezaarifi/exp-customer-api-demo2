@@ -6,4 +6,6 @@ http:
   port: "8081"
 
 autoDiscovery:
-  appId: "17956456"
+  appId: "17968928"
+  
+  

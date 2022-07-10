@@ -1,0 +1,93 @@
+#%RAML 1.0
+title: Customer Api 
+version: v1
+protocols: HTTPS
+mediaType: application/json
+
+uses:
+  commonLib: exchange_modules/fd98f1cf-31e0-4618-ab8d-ddb9983647fa/common-lib/1.0.0/common-lib.raml
+  
+
+securitySchemes:
+  oauth2: !include exchange_modules/fd98f1cf-31e0-4618-ab8d-ddb9983647fa/common-lib/1.0.0/security-schemes/oauth_2_0.raml
+
+types:
+  customer: !include schemas/customer.schema
+  result: !include schemas/result.schema
+  
+resourceTypes: 
+  collection: !include resourceTypes/collection.raml
+  collection-item: !include resourceTypes/collection-item.raml   
+  
+/customers:
+  type: 
+    collection:
+      exampleCollection: !include examples/customers.json
+      exampleItem: !include examples/customer-new.json
+      exampleCreated: !include examples/customer-retrieve.json
+      exampleResult: !include examples/result.json
+  get:
+    securedBy:
+      - oauth2
+    is:
+        [
+          commonLib.searchable: {description : "the criteria for search which could be lastName and firstName" , example : "[lastName,Arifi,equal]"},
+          commonLib.sortable: {fields: lastName2 },
+          commonLib.partial,
+          commonLib.pageable,
+          commonLib.cacheable,
+          commonLib.client-id-required          
+        ]
+  post:
+      is:
+        [commonLib.client-id-required]  
+
+  /{customerId}:
+    type: 
+      collection-item:
+        exampleItem: !include examples/customer-retrieve.json
+        exampleResult: !include examples/result.json
+    get:
+      securedBy:
+        - oauth2
+      is:
+        [
+          commonLib.partial,
+          commonLib.cacheable         
+        ]
+    put:
+      securedBy:
+        - oauth2
+      is:
+        [commonLib.client-id-required]
+
+    delete:
+      securedBy:
+        - oauth2
+      is:
+        [commonLib.client-id-required]    
+                 
+      
+            
+          
+    
+    
+      
+
+    
+      
+      
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+

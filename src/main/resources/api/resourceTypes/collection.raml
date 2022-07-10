@@ -1,0 +1,33 @@
+#%RAML 1.0 ResourceType
+
+get:
+  description: Get	a	list	of	<<resourcePathName>>.
+  is: 
+    [commonLib.401, commonLib.304,commonLib.500]
+  responses:             
+    200:
+      body: 
+        application/json:
+          example:  |
+            <<exampleCollection>>
+
+post:
+  description: Creating a new <<resourcePathName|!singularize>>
+  is:
+    [commonLib.401, commonLib.304,commonLib.404, commonLib.500]
+  body: 
+    application/json:
+      # type: <<resourcePathName|!singularize>>
+      example:
+        <<exampleItem>>
+
+  responses:                
+    201:                       
+      body:
+        application/json: 
+          type: <<resourcePathName|!singularize>>          
+          example: |
+              <<exampleCreated>>
+          
+ 
+  

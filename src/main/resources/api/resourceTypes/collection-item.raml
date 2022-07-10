@@ -1,0 +1,49 @@
+#%RAML 1.0 ResourceType
+
+get:
+  description: |
+    Get the <<resourcePathName|!singularize>>
+    with <<resourcePathName|!singularize>>Id =
+    {<<resourcePathName|!singularize>>Id}
+  is: 
+    [commonLib.401,commonLib.404, commonLib.304,commonLib.500]
+  responses:
+    200:
+      body:
+        application/json:
+          example: |
+            <<exampleItem>>  
+   
+delete:
+  description: deleting a <<resourcePathName|!singularize>>
+        with <<resourcePathName|!singularize>>Id
+  is: 
+    [commonLib.401,commonLib.404,commonLib.500]   
+  responses: 
+    204:
+      body:
+        appapplication/json:
+          example: |
+            {
+              message: "<<resourcePathName|!singularize>> deleted successfully"
+            }
+    
+put:
+  description: updating a <<resourcePathName|!singularize>>
+        with <<resourcePathName|!singularize>>Id
+  is: 
+    [commonLib.401,commonLib.400,commonLib.404,commonLib.500]   
+  body: 
+    application/json:
+       # type: <<resourcePathName|!singularize>> 
+      example: |
+        <<exampleItem>>         
+  responses:
+    200:
+      body: 
+        application/json:
+          example: |
+            {
+              message: "<<resourcePathName|!singularize>> successfully updated"
+            }
+   
