@@ -3,8 +3,8 @@
 name: Build and Deploy to Dev
 
 on:
-  push:
-   branches: [ main ]
+#   push:
+#    branches: [ main ]
   workflow_dispatch:
  
    
@@ -86,8 +86,8 @@ jobs:
          -Danypoint.password="$PASSWORD" \
          -Denv=Dev \
          -Dencryption.key="$ENCRYPTION_KEY" \
-         -Danypoint.platform.client_id= "$ANYPOINT_PLATFORM_CLIENT_ID"\
-         -Danypoint.platform.client_secret= "$ANYPOINT_PLATFORM_CLIENT_ID"\
+         -Danypoint.platform.client_id="$ANYPOINT_PLATFORM_CLIENT_ID"\
+         -Danypoint.platform.client_secret="$ANYPOINT_PLATFORM_CLIENT_ID"\
          -DskipTests
          
    
